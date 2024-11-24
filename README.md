@@ -1,0 +1,1 @@
+# A full stack travel log app using MERN stack
