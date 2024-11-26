@@ -1,12 +1,13 @@
-// import React from "react";
-// import MapComponent from "./MapComponent"; // Assuming MapComponent.js is in the same folder
+import Map from "./Map";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Travel Log</h1>
+    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      <h1>Welcome to the Travel Log</h1>
+      <p>Explore locations and track your journey!</p>
+      <Map />
     </div>
   );
-}
+};
 
 export default App;
