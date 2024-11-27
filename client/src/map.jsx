@@ -4,25 +4,24 @@ import "leaflet/dist/leaflet.css";
 import "maplibre-gl";
 import "@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl";
 
-const Map = () => {
+const Map = ({viewPort,setViewPort}) => {
   useEffect(() => {
-    const map = L.map("map").setView([9.0192, 38.7525], 10); // Addis Ababa coordinates with zoom level 10
-
-    // Add MapLibre GL tiles
+    const map = L.map("map").setView([viewPort.latitude, viewPort.longitude], viewPort.zoom);
+  
     L.maplibreGL({
       style: "https://tiles.openfreemap.org/styles/liberty",
     }).addTo(map);
-
-    // Cleanup function to remove the map instance on component unmount
+  
     return () => {
       map.remove();
     };
-  }, []);
+  }, [viewPort]);
+  
 
   return (
     <div
       id="map"
-      style={{ width: "100%", height: "500px", borderRadius: "8px" }}
+      style={{ width: `${viewPort.width}`, height: `${viewPort.height}`, borderRadius: "8px" }}
     ></div>
   );
 };
