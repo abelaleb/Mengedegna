@@ -1,4 +1,4 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "maplibre-gl";
@@ -6,8 +6,7 @@ import "@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl";
 
 const Map = () => {
   useEffect(() => {
-    // Initialize the map
-    const map = L.map("map").setView([52.517, 13.388], 9.5);
+    const map = L.map("map").setView([9.0192, 38.7525], 10); // Addis Ababa coordinates with zoom level 10
 
     // Add MapLibre GL tiles
     L.maplibreGL({
