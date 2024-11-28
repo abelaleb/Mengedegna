@@ -4,8 +4,9 @@ import { listLogEntries } from "./API";
 
 const App = () => {
   const [logEntries, setLogEntries] = useState([]);
+  const [addEntryLocation, setAddEntryLocation] = useState(null);
   const [viewPort, setViewPort] = useState({
-    width: "100%",
+    width: "95%",
     height: "500px",
     latitude: 38.7946,
     longitude: -96.5348,
@@ -33,6 +34,8 @@ const App = () => {
         viewPort={viewPort}
         setViewPort={setViewPort}
         logEntries={logEntries}
+        addEntryLocation={addEntryLocation}
+        setAddEntryLocation={setAddEntryLocation}
       />
     </div>
   );
