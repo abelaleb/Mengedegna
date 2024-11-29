@@ -19,7 +19,7 @@ const Map = ({
   const mapRef = useRef(null);
 
   useEffect(() => {
-    const map = L.map(mapRef.current).setView(
+    const map = L.map(mapRef.current, { doubleClickZoom: false }).setView(
       [viewPort.latitude, viewPort.longitude],
       viewPort.zoom
     );

@@ -6,30 +6,41 @@ const LogEntryForm = ({ latitude, longitude }) => {
 
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-      <div>
-        <b>Add your new log entry</b>
-        <br />
-        Latitude: {latitude}
-        <br />
-        Longitude: {longitude}
-        <br />
+      
         <form className="entry-form" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="title">Title</label>
-          <input type="text" id="title" {...register("title")} required />
+          <input
+            type="text"
+            id="title"
+            {...register("title")}
+            className="form-input"
+            required
+          />
           <br />
           <label htmlFor="comments">Comments</label>
-          <textarea id="comments" {...register("comments")}></textarea>
+          <textarea
+            id="comments"
+            {...register("comments")}
+            className="form-textarea"
+          ></textarea>
           <br />
           <label htmlFor="image">Image</label>
-          <input id="image" {...register("image")} />
+          <input id="image" {...register("image")} className="form-input" />
           <br />
-          <label htmlFor="visitDate" required>Visit Date</label>
-          <input type="date" id="visitDate" {...register("visitDate")} required />
+          <label htmlFor="visitDate" required>
+            Visit Date
+          </label>
+          <input
+            type="date"
+            id="visitDate"
+            {...register("visitDate")}
+            className="form-input"
+            required
+          />
           <br />
-          <button>Create Entry</button>
+          <button className="form-button">Create Entry</button>
         </form>
       </div>
-    </div>
   );
 };
 
