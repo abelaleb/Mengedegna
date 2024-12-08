@@ -47,7 +47,15 @@ const Map = ({
       const formContainer = document.getElementById("form-container");
       if (formContainer) {
         const root = createRoot(formContainer);
-        root.render(<LogEntryForm latitude={lat} longitude={lng} />);
+        root.render(
+          <LogEntryForm
+            latitude={lat}
+            longitude={lng}
+            onSubmit={() => {
+              marker.closePopup();
+            }}
+          />
+        );
       }
     });
 
@@ -58,17 +66,19 @@ const Map = ({
     const handleMarkerClick = (marker) => marker.openPopup();
 
     logEntries.forEach((entry) => {
-      const marker = L.marker([entry.latitude, entry.longitude]).addTo(map);
-      marker.bindPopup(`
-         <div style="display: flex; align-items: center; gap: 10px;">
-          <img src="${entry.image}" alt="${entry.title}" style="max-width: 200px; max-height: 200px; height: auto;">
-          <div >
-            <b>${entry.title}</b><br>
-            ${entry.comments}<br>
+      if (entry.title && entry.visitDate) {
+        const marker = L.marker([entry.latitude, entry.longitude]).addTo(map);
+        marker.bindPopup(`
+           <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="${entry.image}" alt="${entry.title}" style="max-width: 200px; max-height: 200px; height: auto;">
+            <div >
+              <b>${entry.title}</b><br>
+              ${entry.comments}<br>
+            </div>
           </div>
-        </div>
-      `);
-      marker.on("click", () => handleMarkerClick(marker));
+        `);
+        marker.on("click", () => handleMarkerClick(marker));
+      }
     });
 
     return () => map.remove();
