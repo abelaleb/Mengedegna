@@ -10,9 +10,7 @@ const middlewares = require("./middlewares");
 const logs = require("./api/logs");
 
 const app = express();
-
 mongoose
-
   .connect(process.env.DATABASE_URL)
   .then(() => {
     console.log("Mongoose server has started");
